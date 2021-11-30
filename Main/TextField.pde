@@ -18,7 +18,7 @@ public class TextField {
   void addKey(char letter, int code) {
     if (isSelected) {
       if (code == BACKSPACE) {
-        delKey();
+        delLetter();
       }
       else if (code == 32) {
         
@@ -28,11 +28,12 @@ public class TextField {
       }
       else {
         if (isKeyLetter(letter) || isKeyNumber(letter))
-          addText(letter);
+          addLetter(letter);
       }
     }
   }
   
+  //Tilføjer, et tegn til inputtet.
   void addLetter(char letter) {
     if(textWidth(input + letter) < size.x) {
       input += letter;
@@ -42,7 +43,7 @@ public class TextField {
   //Kaldes, når der trykkes på backspace.
   private void delLetter() {
     if(!input.isEmpty())
-      
+      input = input.substring(input.length() - 1);
   }
   
   protected boolean isKeyLetter(char letter) {
