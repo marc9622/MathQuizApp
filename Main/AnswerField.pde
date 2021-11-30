@@ -1,4 +1,4 @@
-class LoginField extends TextField {
+class AnswerField extends TextField {
   
   public void addKey(int keyCode) {
     

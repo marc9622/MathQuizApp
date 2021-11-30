@@ -1,12 +1,16 @@
 public class TextField {
   
-  public String text = "";
+  String defaultText;
+  String input = "";
   
-  public void display() {
+  
+  
+  void display() {
     
   }
   
-  public void addKey(int keyCode) {
+  //Kaldes af main for at tilføje bogstav til input.
+  void addKey(int keyCode) {
     
   }
   
