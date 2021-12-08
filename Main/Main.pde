@@ -1,9 +1,16 @@
+import de.bezier.data.sql.*;
+SQLite Data;
+
 ArrayList<TextField> keyListeners = new ArrayList<TextField>();
 
 void settings() {
 }
 
 void setup() {
+  Data = new SQLite( this, "questions.sqlite" );
+  if ( Data.connect() ){
+    Data.query( "SELECT Nr, Question, Multi FROM Questions;" );
+  }
 }
 
 void draw() {
