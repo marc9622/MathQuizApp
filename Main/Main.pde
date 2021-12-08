@@ -1,10 +1,21 @@
+TextField feldt = new TextField(500, 100, 200, 50, "Type here");
 
+void settings() {
+  size(1000, 500);
+}
 
 void setup() {
-  TextField feldt = new TextField(100, 100, 1000, 100, "Hey");
-  feldt.display();
 }
 
 void draw() {
-  
+  background(255);
+  feldt.display();
+}
+
+void keyPressed() {
+  feldt.keyPress();
+}
+
+void mouseClicked() {
+  feldt.mousePress();
 }

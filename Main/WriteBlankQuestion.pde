@@ -3,7 +3,7 @@ class WriteBlankQuestion extends Question{
   
   WriteBlankQuestion(){
     
-    answer = new AnswerField();
+    //answer = new AnswerField();
   }
   
   void update(){

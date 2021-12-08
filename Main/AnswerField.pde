@@ -17,8 +17,19 @@ class AnswerField extends TextField {
   }
   
   //Overrider, så der kun kan tilføjes tal.
-  public void addKey(int keyCode) {
-    
+  void addKey(char letter, int code) {
+    if (isSelected) {
+      if (code == BACKSPACE) {
+        delLetter();
+      }
+      else if (code == ENTER || code == RETURN) {
+        action();
+      }
+      else {
+        if (isKeyNumber(letter))
+          addLetter(letter);
+      }
+    }
   }
   
 }
