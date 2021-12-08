@@ -1,30 +1,76 @@
 public class TextField {
 
-  PVector position;
+  PVector pos;
   PVector size;
+  
+  color priCol;
+  color secCol;
   
   String defaultText;
   String input = "";
 
   boolean isSelected;
 
-  void display() {
+  public TextField(PVector pos, PVector size) {
+    this.pos = pos.copy();
+    this.size = size.copy();
+  }
+  
+  public TextField(int posX, int posY, int sizeX, int sizeY) {
+    this(new PVector(posX, posY), new PVector(sizeX, sizeY));
+  }
+
+  public TextField(PVector pos, PVector size, String defaultText) {
+    this(pos, size);
+    this.defaultText = defaultText;
+  }
+  
+  public TextField(int posX, int posY, int sizeX, int sizeY, String defaultText) {
+    this(new PVector(posX, posY), new PVector(sizeX, sizeY), defaultText);
+  }
+
+  public TextField(PVector pos, PVector size, color priCol, color secCol, String defaultText) {
+    this(pos, size, defaultText);
+    this.priCol = priCol;
+    this.secCol = secCol;
+  }
+  
+  public TextField(int posX, int posY, int sizeX, int sizeY, color priCol, color secCol, String defaultText) {
+    this(new PVector(posX, posY), new PVector(sizeX, sizeY), priCol, secCol, defaultText);
+  }
+
+  public void display() {
+    rectMode(CENTER);
+    fill(priCol);
+    stroke(secCol);
+    rect(pos.x, pos.y, size.x, size.y, 10);
+    
+    textAlign(CENTER);
+    fill(secCol);
+    text(getDisplayText(), pos.x, pos.y);
+  }
+  
+  private String getDisplayText() {
+    if(input.isBlank())
+      return defaultText;
+    return input;
   }
 
   //Kaldes af main for at tilføje bogstav til input.
-  void addKey(int keyCode) {
+  public void addKey() {
+    addKey(key, keyCode);
   }
 
-  void addKey(char letter, int code) {
+  private void addKey(char letter, int code) {
     if (isSelected) {
       if (code == BACKSPACE) {
         delLetter();
       }
-      else if (code == 32) {
-        
+      else if (code == 32) { //Mellemrum
+        addLetter(' ');
       }
-      else if (code == ENTER) {
-        
+      else if (code == ENTER || code == RETURN) {
+        //NÅR MAN TRYKKER ENTER
       }
       else {
         if (isKeyLetter(letter) || isKeyNumber(letter))
