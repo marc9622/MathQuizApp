@@ -1,9 +1,7 @@
-<<<<<<< HEAD
-LoginPage loginPage;
-=======
 import de.bezier.data.sql.*;
+
+LoginPage loginPage;
 SQLite Data;
->>>>>>> bbb3a18a5e18b8de418aad9cc816d9577e4243e8
 
 ArrayList<TextField> keyListeners = new ArrayList<TextField>();
 
@@ -12,14 +10,11 @@ void settings() {
 }
 
 void setup() {
-<<<<<<< HEAD
   loginPage = new LoginPage();
-=======
   Data = new SQLite( this, "questions.sqlite" );
   if ( Data.connect() ){
     Data.query( "SELECT Nr, Question, Multi FROM Questions;" );
   }
->>>>>>> bbb3a18a5e18b8de418aad9cc816d9577e4243e8
 }
 
 void draw() {
