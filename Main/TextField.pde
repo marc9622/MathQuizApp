@@ -4,7 +4,7 @@ public class TextField {
   PVector size;
   
   color priCol = color(232, 244, 255);
-  color secCol = color(135, 197, 255);
+  color secCol = color(99, 181, 255);
   color selCol = color(196, 227, 255);
   
   String defaultText;
