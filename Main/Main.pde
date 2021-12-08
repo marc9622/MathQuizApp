@@ -1,13 +1,18 @@
+LoginPage loginPage;
+
 ArrayList<TextField> keyListeners = new ArrayList<TextField>();
 
 void settings() {
+  size(1000, 500);
 }
 
 void setup() {
+  loginPage = new LoginPage();
 }
 
 void draw() {
   background(255);
+  loginPage.display();
 }
 
 void keyPressed() {
