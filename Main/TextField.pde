@@ -67,8 +67,9 @@ public class TextField {
        mouseX < pos.x + size.x / 2 &&
        mouseY > pos.y - size.y / 2 &&
        mouseY < pos.y + size.y / 2
-       )
-     isSelected = !isSelected;
+       ) {
+      isSelected = !isSelected;
+    }
   }
 
   //Kaldes af main for at tilføje bogstav til input.
