@@ -1,7 +1,6 @@
-TextField feldt = new TextField(500, 100, 200, 50, "Type here");
+ArrayList<TextField> keyListeners = new ArrayList<TextField>();
 
 void settings() {
-  size(1000, 500);
 }
 
 void setup() {
@@ -9,13 +8,16 @@ void setup() {
 
 void draw() {
   background(255);
-  feldt.display();
 }
 
 void keyPressed() {
-  feldt.keyPress();
+  for(TextField i : keyListeners) {
+    i.keyPress();
+  }
 }
 
 void mouseClicked() {
-  feldt.mousePress();
+  for(TextField i : keyListeners) {
+    i.mousePress();
+  }
 }

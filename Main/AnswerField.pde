@@ -13,7 +13,7 @@ class AnswerField extends TextField {
   }
   
   public AnswerField(int posX, int posY, int sizeX, int sizeY, color priCol, color secCol) {
-    super(new PVector(posX, posY), new PVector(sizeX, sizeY), priCol, secCol, "");
+    super(posX, posY, sizeX, sizeY, priCol, secCol, "");
   }
   
   //Overrider, så der kun kan tilføjes tal.

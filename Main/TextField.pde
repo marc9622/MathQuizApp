@@ -53,10 +53,13 @@ public class TextField {
     fill(secCol);
     int textSize = 25;
     textSize(textSize);
+    text(getDisplayText(), pos.x, pos.y + textSize / 3);
+  }
+  
+  protected String getDisplayText() {
     if(input.isBlank())
-      text(defaultText, pos.x, pos.y + textSize / 3);
-    else
-      text(input, pos.x, pos.y + textSize / 3);
+      return defaultText;
+    return input;
   }
   
   public void mousePress() {
