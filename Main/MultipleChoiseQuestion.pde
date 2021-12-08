@@ -1,4 +1,4 @@
-class MultipleChoiseQuestion {
+class MultipleChoiseQuestion extends Question{
   
   
   
