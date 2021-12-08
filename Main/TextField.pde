@@ -3,8 +3,9 @@ public class TextField {
   PVector pos;
   PVector size;
   
-  color priCol;
-  color secCol;
+  color priCol = color(232, 244, 255);
+  color secCol = color(99, 181, 255);
+  color selCol = color(196, 227, 255);
   
   String defaultText;
   String input = "";
@@ -41,27 +42,38 @@ public class TextField {
 
   public void display() {
     rectMode(CENTER);
-    fill(priCol);
+    if(isSelected)
+      fill(selCol);
+    else
+      fill(priCol);
     stroke(secCol);
     rect(pos.x, pos.y, size.x, size.y, 10);
     
     textAlign(CENTER);
     fill(secCol);
-    text(getDisplayText(), pos.x, pos.y);
+    int textSize = 25;
+    textSize(textSize);
+    if(input.isBlank())
+      text(defaultText, pos.x, pos.y + textSize / 3);
+    else
+      text(input, pos.x, pos.y + textSize / 3);
   }
   
-  private String getDisplayText() {
-    if(input.isBlank())
-      return defaultText;
-    return input;
+  public void mousePress() {
+    if(mouseX > pos.x - size.x / 2 &&
+       mouseX < pos.x + size.x / 2 &&
+       mouseY > pos.y - size.y / 2 &&
+       mouseY < pos.y + size.y / 2
+       )
+     isSelected = !isSelected;
   }
 
   //Kaldes af main for at tilføje bogstav til input.
-  public void addKey() {
+  public void keyPress() {
     addKey(key, keyCode);
   }
 
-  private void addKey(char letter, int code) {
+  protected void addKey(char letter, int code) {
     if (isSelected) {
       if (code == BACKSPACE) {
         delLetter();
@@ -70,7 +82,7 @@ public class TextField {
         addLetter(' ');
       }
       else if (code == ENTER || code == RETURN) {
-        //NÅR MAN TRYKKER ENTER
+        action();
       }
       else {
         if (isKeyLetter(letter) || isKeyNumber(letter))
@@ -87,9 +99,9 @@ public class TextField {
   }
   
   //Kaldes, når der trykkes på backspace.
-  private void delLetter() {
+  protected void delLetter() {
     if(!input.isEmpty())
-      input = input.substring(input.length() - 1);
+      input = input.substring(0, input.length() - 1);
   }
   
   protected boolean isKeyLetter(char letter) {
@@ -98,5 +110,9 @@ public class TextField {
   
   protected boolean isKeyNumber(char letter) {
     return letter >= '0' && letter <= '9';
+  }
+  
+  public void action() {
+    
   }
 }
