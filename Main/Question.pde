@@ -1,7 +1,10 @@
 class Question {
+  int number;
+  String question = "";
   
-  Question(){
-  
+  Question(int nr, String question_){
+    number = nr;
+    question = question_;
   }
   
   void update(){
@@ -9,7 +12,7 @@ class Question {
   }
   
   void display(){
-  
+    text(question,width/3,100);
   }
   
   
