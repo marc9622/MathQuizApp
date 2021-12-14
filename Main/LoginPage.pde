@@ -18,7 +18,7 @@ class LoginPage {
     }
     //Overrider metoden, så man kører login metoden, når man trykker enter.
     public void action() {
-      
+      login();
     }
   };
 
