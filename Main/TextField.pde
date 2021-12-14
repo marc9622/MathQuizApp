@@ -57,7 +57,7 @@ public class TextField {
   }
   
   protected String getDisplayText() {
-    if(input.isBlank())
+    if(input.length() == 0)
       return defaultText;
     return input;
   }

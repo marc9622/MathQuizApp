@@ -26,7 +26,7 @@ class LoginField extends TextField {
   
   //Overrider metoden, så den viste tekst bliver censoreret.
   protected String getDisplayText() {
-    if(input.isBlank())
+    if(input.length() == 0)
       return defaultText;
     String text = "";
     for(int i = 0; i < input.length(); i++)
