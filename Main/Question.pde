@@ -8,7 +8,9 @@ class Question {
   }
   
   void update(){
-  
+    if(keyCode == ENTER){
+      currentQ ++;
+    }
   }
   
   void display(){

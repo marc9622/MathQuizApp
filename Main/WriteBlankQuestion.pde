@@ -6,7 +6,7 @@ class WriteBlankQuestion extends Question{
     answer = new AnswerField(new PVector(width/3,300),new PVector(300,200));
   }
   
-  void update(){
+  void display(){
     super.update();
     answer.display();
   }
