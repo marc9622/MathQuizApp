@@ -33,11 +33,11 @@ void draw() {
 }
 
 void keyPressed() {
-  inputManager.input();
+  InputManager.input();
 }
 
 void mouseClicked() {
-  inputManager.select();
+  InputManager.select();
 }
 
 //Brugt til at gøre det simplere at tilføje tekst.

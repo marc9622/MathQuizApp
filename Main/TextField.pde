@@ -16,7 +16,7 @@ public class TextField {
   public TextField(PVector pos, PVector size) {
     this.pos = pos.copy();
     this.size = size.copy();
-    inputManager.add(this);
+    InputManager.add(this);
   }
   
   public TextField(int posX, int posY, int sizeX, int sizeY) {

@@ -1,5 +1,5 @@
 //Statisk klasse, der holder styr på textfeldterne og sørger for, at man kun kan redigere i ét textfeldt af gangen.
-static class inputManager {
+static class InputManager {
   
   //Listen af alle textfeldter.
   private static ArrayList<TextField> keyListeners = new ArrayList<TextField>();
