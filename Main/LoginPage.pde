@@ -1,33 +1,32 @@
-class LoginPage {
+class LoginPage extends Page {
 
-  //Anonym class, med overridden action().
-  TextField nameField = new TextField(width * 1/2, height * 3/6, 200, 50, "Navn") {
-    //Overrider metoden, så man selecter passField, når man trykker enter.
-    public void action() {
-      InputManager.select(passField);
-    }
-  };
-  //Anonym class, der censorerer inputtet, og kører login().
-  TextField passField = new TextField(width * 1/2, height * 4/6, 200, 50, "Kode") {
-    //Overrider metoden, så den viste tekst bliver censoreret.
-    protected void displayText(String input) {
-      String text = "";
-      for (int i = 0; i < input.length(); i++)
-        text += '*';
-      super.displayText(text);
-    }
-    //Overrider metoden, så man kører login metoden, når man trykker enter.
-    public void action() {
-      login();
-    }
-  };
+  TextField nameField;
+  TextField passField;
 
   String statusText;
 
-  public LoginPage() {
+  protected void initiate() {
+    nameField = new TextField(width * 1/2, height * 3/6, 200, 50, "Navn") {
+      public void action() {
+        InputManager.select(passField);
+      }
+    };
+    passField = new TextField(width * 1/2, height * 4/6, 200, 50, "Kode") {
+      //Overrider metoden, så den viste tekst bliver censoreret.
+      protected void displayText(String input) {
+        String text = "";
+        for (int i = 0; i < input.length(); i++)
+          text += '*';
+        super.displayText(text);
+      }
+      //Overrider metoden, så man kører login metoden, når man trykker enter.
+      public void action() {
+        login();
+      }
+    };
   }
 
-  void display() {
+  public void display() {
     showText("Matematik Quiz", width * 1/2, height * 2/6, 50, strongTextColor);
     nameField.display();
     passField.display();

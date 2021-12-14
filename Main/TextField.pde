@@ -97,6 +97,9 @@ public class TextField {
       else if (code == 32) { //Mellemrum
         addLetter(' ');
       }
+      else if (code == TAB) {
+        tab();
+      }
       else if (code == ENTER || code == RETURN) {
         action();
       }
@@ -128,6 +131,9 @@ public class TextField {
     return letter >= '0' && letter <= '9';
   }
   
+  public void tab() {
+    InputManager.selectNext();
+  }
   //Lavet til at blive overridden.
   public void action() {}
 }

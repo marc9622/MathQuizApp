@@ -1,3 +1,7 @@
-class TakeQuizPage {
+class TakeQuizPage extends Page {
+  
+  public void display() {
+    
+  }
   
 }
