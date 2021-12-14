@@ -1,6 +1,7 @@
 class Question {
   int number;
   String question = "";
+  String answer = "";
   
   Question(int nr, String question_){
     number = nr;
@@ -16,6 +17,4 @@ class Question {
   void display(){
     text(question,width/3,100);
   }
-  
-  
 }
