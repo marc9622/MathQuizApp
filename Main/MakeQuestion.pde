@@ -1,4 +1,3 @@
-
 class MakeQuestion{
   TextField field;
   boolean multi;

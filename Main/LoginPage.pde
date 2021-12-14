@@ -1,7 +1,11 @@
 class LoginPage {
   
-  TextField textField = new TextField(width * 1/2, height * 3/6, 200, 50, "name");
-  LoginField loginField = new LoginField(width * 1/2, height * 4/6, 200, 50, "password");
+  TextField nameField = new TextField(width * 1/2, height * 3/6, 200, 50, "name");
+  LoginField passField = new LoginField(width * 1/2, height * 4/6, 200, 50, "password") {
+    public void action() {
+      println("Logging in...");
+    }
+  };
   
   public LoginPage() {
     
@@ -9,8 +13,8 @@ class LoginPage {
   
   void display() {
     showText("<program name>", width * 1/2, height * 2/6, 50, primaryColor);
-    textField.display();
-    loginField.display();
+    nameField.display();
+    passField.display();
   }
   
 }

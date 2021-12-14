@@ -120,7 +120,6 @@ public class TextField {
     return letter >= '0' && letter <= '9';
   }
   
-  public void action() {
-    
-  }
+  //Lavet til at blive overridden.
+  public void action() {}
 }

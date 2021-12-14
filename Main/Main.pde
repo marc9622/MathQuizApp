@@ -20,6 +20,7 @@ void settings() {
 
 void setup() {
   loginPage = new LoginPage();
+  Data = new SQLite( this, "questions.sqlite" );
   getQuestions();
 }
 
@@ -49,7 +50,6 @@ public void showText(String text, float x, float y, int size, color col) {
 }
 
 void getQuestions(){
-  Data = new SQLite( this, "questions.sqlite" );
   if ( Data.connect() ){
     Data.query( "SELECT Nr, Question, Multi FROM Questions;" );
     
