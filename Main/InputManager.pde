@@ -27,6 +27,16 @@ static class InputManager {
     }
   }
   
+  static void select(TextField textField) {
+    selectedTextField = keyListeners.indexOf(textField);
+    for(int i = 0; i < keyListeners.size(); i++) {
+      if(i == selectedTextField)
+        keyListeners.get(i).isSelected = true;
+      else
+        keyListeners.get(i).isSelected = false;
+    }
+  }
+  
   //Bruges til at fortælle det selected textfeldt, at det skal registrere, hvad der bliver tastet.
   static void input() {
     keyListeners.get(selectedTextField).keyPress();

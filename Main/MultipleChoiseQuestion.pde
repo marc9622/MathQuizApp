@@ -4,5 +4,4 @@ class MultipleChoiseQuestion extends Question{
     super(nr,question_,answer_);
   }
   
-  
 }
