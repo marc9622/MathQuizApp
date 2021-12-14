@@ -1,17 +1,17 @@
 public class TextField {
 
-  PVector pos;
-  PVector size;
+  private PVector pos;
+  private PVector size;
   
-  color pricol = primaryColor;
-  color secCol = secondaryColor;
-  color selCol = selectedColor;
+  private color pricol = primaryColor;
+  private color secCol = secondaryColor;
+  private color selCol = selectedColor;
   
   String defaultText;
   String input = "";
-  int textSize = 25;
+  private int textSize = 25;
 
-  boolean isSelected;
+  public boolean isSelected;
 
   public TextField(PVector pos, PVector size) {
     this.pos = pos.copy();
