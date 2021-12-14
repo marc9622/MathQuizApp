@@ -3,9 +3,10 @@ public class TextField {
   private PVector pos;
   private PVector size;
   
-  private color pricol = primaryColor;
-  private color secCol = secondaryColor;
-  private color selCol = selectedColor;
+  private color priCol = strongTextColor;
+  private color secCol = weakTextColor;
+  private color fillCol = fillColor;
+  private color selCol = selectColor;
   
   String defaultText;
   String input = "";
@@ -34,8 +35,8 @@ public class TextField {
 
   public TextField(PVector pos, PVector size, color priCol, color secCol, String defaultText) {
     this(pos, size, defaultText);
-    this.secCol = priCol;
-    this.pricol = secCol;
+    this.fillCol = priCol;
+    this.priCol = secCol;
   }
   
   public TextField(int posX, int posY, int sizeX, int sizeY, color priCol, color secCol, String defaultText) {
@@ -47,20 +48,27 @@ public class TextField {
     if(isSelected)
       fill(selCol);
     else
-      fill(secCol);
-    stroke(pricol);
+      fill(fillCol);
+    stroke(priCol);
     rect(pos.x, pos.y, size.x, size.y, 10);
     
-    textAlign(CENTER);
-    fill(pricol);
-    textSize(textSize);
-    text(getDisplayText(), pos.x, pos.y + textSize / 3);
+    displayText(input);
   }
   
-  protected String getDisplayText() {
-    if(input.length() == 0)
-      return defaultText;
-    return input;
+  //Overriden af passField i LoginPage.
+  protected void displayText(String input) {
+    textAlign(CENTER);
+    textSize(textSize);
+    String text;
+    if(input.length() == 0) {
+      fill(secCol);
+      text = defaultText;
+    }
+    else {
+      fill(priCol);
+      text = input;
+    }
+    text(text, pos.x, pos.y + textSize / 3);
   }
   
   //Registrere om dette tekstfeldt skal selectes ud fra musens position.

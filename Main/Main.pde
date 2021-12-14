@@ -10,9 +10,10 @@ boolean teacher;
 int NrQuestions;
 
 //Standard farvepalette til programmet. 
-color primaryColor = color(99, 181, 255);
-color secondaryColor = color(232, 244, 255);
-color selectedColor = color(196, 227, 255);
+color strongTextColor = color(99, 181, 255);
+color weakTextColor = color(150, 205, 255);
+color fillColor = color(232, 244, 255);
+color selectColor = color(196, 227, 255);
 
 void settings() {
   size(1000, 500);
