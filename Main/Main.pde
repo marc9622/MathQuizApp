@@ -7,6 +7,7 @@ ArrayList<Question> allQuestions = new ArrayList<Question>();
 
 int currentQ = 0;
 boolean teacher;
+int NrQuestions;
 
 //Standard farvepalette til programmet. 
 color primaryColor = color(99, 181, 255);
@@ -57,6 +58,7 @@ void getQuestions(){
         allQuestions.add(new MultipleChoiseQuestion(Data.getInt("Nr"),Data.getString("Question")));
       else if(!Data.getBoolean("Multi"))
         allQuestions.add(new WriteBlankQuestion(Data.getInt("Nr"),Data.getString("Question")));
+      NrQuestions++;
     }
   }
 }
