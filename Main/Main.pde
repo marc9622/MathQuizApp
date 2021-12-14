@@ -3,11 +3,15 @@ import de.bezier.data.sql.*;
 LoginPage loginPage;
 SQLite Data;
 
-ArrayList<TextField> keyListeners = new ArrayList<TextField>();
 ArrayList<Question> allQuestions = new ArrayList<Question>();
 
 int currentQ = 0;
 boolean teacher;
+
+//Standard farvepalette til programmet. 
+color primaryColor = color(99, 181, 255);
+color secondaryColor = color(232, 244, 255);
+color selectedColor = color(196, 227, 255);
 
 void settings() {
   size(1000, 500);
@@ -29,15 +33,18 @@ void draw() {
 }
 
 void keyPressed() {
-  for(TextField i : keyListeners) {
-    i.keyPress();
-  }
+  inputManager.input();
 }
 
 void mouseClicked() {
-  for(TextField i : keyListeners) {
-    i.mousePress();
-  }
+  inputManager.select();
+}
+
+//Brugt til at gøre det simplere at tilføje tekst.
+public void showText(String text, float x, float y, int size, color col) {
+  textSize(size);
+  fill(col);
+  text(text, (int)x, (int)y);
 }
 
 void getQuestions(){

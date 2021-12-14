@@ -3,18 +3,20 @@ public class TextField {
   PVector pos;
   PVector size;
   
-  color priCol = color(232, 244, 255);
-  color secCol = color(99, 181, 255);
-  color selCol = color(196, 227, 255);
+  color pricol = primaryColor;
+  color secCol = secondaryColor;
+  color selCol = selectedColor;
   
   String defaultText;
   String input = "";
+  int textSize = 25;
 
   boolean isSelected;
 
   public TextField(PVector pos, PVector size) {
     this.pos = pos.copy();
     this.size = size.copy();
+    inputManager.add(this);
   }
   
   public TextField(int posX, int posY, int sizeX, int sizeY) {
@@ -32,8 +34,8 @@ public class TextField {
 
   public TextField(PVector pos, PVector size, color priCol, color secCol, String defaultText) {
     this(pos, size, defaultText);
-    this.priCol = priCol;
-    this.secCol = secCol;
+    this.secCol = priCol;
+    this.pricol = secCol;
   }
   
   public TextField(int posX, int posY, int sizeX, int sizeY, color priCol, color secCol, String defaultText) {
@@ -45,13 +47,12 @@ public class TextField {
     if(isSelected)
       fill(selCol);
     else
-      fill(priCol);
-    stroke(secCol);
+      fill(secCol);
+    stroke(pricol);
     rect(pos.x, pos.y, size.x, size.y, 10);
     
     textAlign(CENTER);
-    fill(secCol);
-    int textSize = 25;
+    fill(pricol);
     textSize(textSize);
     text(getDisplayText(), pos.x, pos.y + textSize / 3);
   }
@@ -62,14 +63,17 @@ public class TextField {
     return input;
   }
   
-  public void mousePress() {
+  //Registrere om dette tekstfeldt skal selectes ud fra musens position.
+  public boolean mousePress() {
     if(mouseX > pos.x - size.x / 2 &&
        mouseX < pos.x + size.x / 2 &&
        mouseY > pos.y - size.y / 2 &&
        mouseY < pos.y + size.y / 2
        ) {
       isSelected = !isSelected;
+      return isSelected;
     }
+    return false;
   }
 
   //Kaldes af main for at tilføje bogstav til input.
