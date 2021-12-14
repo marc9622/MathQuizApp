@@ -51,13 +51,13 @@ public void showText(String text, float x, float y, int size, color col) {
 void getQuestions(){
   Data = new SQLite( this, "questions.sqlite" );
   if ( Data.connect() ){
-    Data.query( "SELECT Nr, Question, Multi FROM Questions;" );
+    Data.query( "SELECT Nr, Question, Answer, Multi FROM Questions;" );
     
     while(Data.next()){
       if(Data.getBoolean("Multi"))
-        allQuestions.add(new MultipleChoiseQuestion(Data.getInt("Nr"),Data.getString("Question")));
+        allQuestions.add(new MultipleChoiseQuestion(Data.getInt("Nr"),Data.getString("Question"),Data.getString("Answer")));
       else if(!Data.getBoolean("Multi"))
-        allQuestions.add(new WriteBlankQuestion(Data.getInt("Nr"),Data.getString("Question")));
+        allQuestions.add(new WriteBlankQuestion(Data.getInt("Nr"),Data.getString("Question"),Data.getString("Answer")));
       NrQuestions++;
     }
   }

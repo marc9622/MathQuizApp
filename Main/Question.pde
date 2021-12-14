@@ -3,9 +3,10 @@ class Question {
   String question = "";
   String answer = "";
   
-  Question(int nr, String question_){
+  Question(int nr, String question_, String answer_){
     number = nr;
     question = question_;
+    answer = answer_;
   }
   
   void update(){
