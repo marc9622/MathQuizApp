@@ -27,6 +27,7 @@ void setup() {
 
 void draw() {
   background(255);
+  //viewStatsPage.display();
   loginPage.display();
   
   if(currentQ < allQuestions.size() && !teacher){
@@ -52,6 +53,7 @@ public void showText(String text, float x, float y, int size, color col) {
 
 void getQuestions(){
   if ( Data.connect() ){
+   
     Data.query( "SELECT Nr, Question, Answer, Multi FROM Questions;" );
     
     while(Data.next()){
