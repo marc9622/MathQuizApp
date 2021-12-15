@@ -6,7 +6,6 @@ class ViewStatsPage extends Page{
   }
   
   public void display() {
-    
     if ( Data.connect() ){
      Data.query( "SELECT Nr, Navn, Kode, Score1, Score2 FROM ElevData;" );
       while(Data.next()){
@@ -16,6 +15,7 @@ class ViewStatsPage extends Page{
         
         averageScore1 += Data.getInt("Score1");
         averageScore2 += Data.getInt("Score2");
+
       }
     }
     averageScore1 /= students;
@@ -23,15 +23,21 @@ class ViewStatsPage extends Page{
     
     push();
     rectMode(CORNER);
-    fill(fillColor);
-    rect(50,height-averageScore1*2,100,averageScore1*2);
+    fill(weakTextColor);
+    rect(50,height-averageScore1*4,100,averageScore1*4);
     fill(strongTextColor);
-    rect(175,height-averageScore2*2,100,averageScore2*2);
+    rect(175,height-averageScore2*4,100,averageScore2*4);
     
     fill(0);
     text("Average score 1",52,height-10);
     text("Average score 2",177,height-10);
     
+    stroke(0,0,0,100);
+    for(int i = 0 ; i < 11; i++){
+    text(i*10,25,height-i*40);
+    line(25,height-i*40,300,height-i*40);
+    }
+    stroke(0);
     strokeWeight(3);
     line(400,0,400,height);
     pop();

@@ -1,6 +1,7 @@
 import de.bezier.data.sql.*;
 
 LoginPage loginPage;
+ViewStatsPage stat;
 SQLite Data;
 
 ArrayList<Question> allQuestions = new ArrayList<Question>();
@@ -23,11 +24,12 @@ void setup() {
   loginPage = new LoginPage();
   Data = new SQLite( this, "questions.sqlite" );
   getQuestions();
+  //stat = new ViewStatsPage();
 }
 
 void draw() {
   background(255);
-  //viewStatsPage.display();
+  //stat.display();
   loginPage.display();
   
   if(currentQ < allQuestions.size() && !teacher){
