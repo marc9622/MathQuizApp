@@ -1,20 +1,25 @@
 public class TextField {
 
-  PVector pos;
-  PVector size;
+  private PVector pos;
+  private PVector size;
   
-  color priCol = color(232, 244, 255);
-  color secCol = color(99, 181, 255);
-  color selCol = color(196, 227, 255);
+  private color priCol = strongTextColor;
+  private color secCol = weakTextColor; 
+  private color fillCol = fillColor;
+  private color selCol = selectColor;
   
   String defaultText;
   String input = "";
+  private int textSize = 25;
 
-  boolean isSelected;
+  public boolean isSelected;
+  
+  boolean hidden = false; 
 
   public TextField(PVector pos, PVector size) {
     this.pos = pos.copy();
     this.size = size.copy();
+    InputManager.add(this);
   }
   
   public TextField(int posX, int posY, int sizeX, int sizeY) {
@@ -32,8 +37,8 @@ public class TextField {
 
   public TextField(PVector pos, PVector size, color priCol, color secCol, String defaultText) {
     this(pos, size, defaultText);
-    this.priCol = priCol;
-    this.secCol = secCol;
+    this.fillCol = priCol;
+    this.priCol = secCol;
   }
   
   public TextField(int posX, int posY, int sizeX, int sizeY, color priCol, color secCol, String defaultText) {
@@ -41,35 +46,47 @@ public class TextField {
   }
 
   public void display() {
+    
+    if(hidden == false){
     rectMode(CENTER);
     if(isSelected)
       fill(selCol);
     else
-      fill(priCol);
-    stroke(secCol);
+      fill(fillCol);
+    stroke(priCol);
     rect(pos.x, pos.y, size.x, size.y, 10);
     
+    displayText(input);
+    }
+  }
+  
+  //Overriden af passField i LoginPage.
+  protected void displayText(String input) {
     textAlign(CENTER);
-    fill(secCol);
-    int textSize = 25;
     textSize(textSize);
-    text(getDisplayText(), pos.x, pos.y + textSize / 3);
+    String text;
+    if(input.length() == 0) {
+      fill(secCol);
+      text = defaultText;
+    }
+    else {
+      fill(priCol);
+      text = input;
+    }
+    text(text, pos.x, pos.y + textSize / 3);
   }
   
-  protected String getDisplayText() {
-    if(input.length() == 0)
-      return defaultText;
-    return input;
-  }
-  
-  public void mousePress() {
+  //Registrere om dette tekstfeldt skal selectes ud fra musens position.
+  public boolean mousePress() {
     if(mouseX > pos.x - size.x / 2 &&
        mouseX < pos.x + size.x / 2 &&
        mouseY > pos.y - size.y / 2 &&
        mouseY < pos.y + size.y / 2
        ) {
       isSelected = !isSelected;
+      return isSelected;
     }
+    return false;
   }
 
   //Kaldes af main for at tilføje bogstav til input.
@@ -78,12 +95,15 @@ public class TextField {
   }
 
   protected void addKey(char letter, int code) {
-    if (isSelected) {
+    if (isSelected && hidden == false) {
       if (code == BACKSPACE) {
         delLetter();
       }
       else if (code == 32) { //Mellemrum
         addLetter(' ');
+      }
+      else if (code == TAB) {
+        tab();
       }
       else if (code == ENTER || code == RETURN) {
         action();
@@ -116,7 +136,9 @@ public class TextField {
     return letter >= '0' && letter <= '9';
   }
   
-  public void action() {
-    
+  public void tab() {
+    InputManager.selectNext();
   }
+  //Lavet til at blive overridden.
+  public void action() {}
 }
