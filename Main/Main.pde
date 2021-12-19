@@ -8,7 +8,6 @@ TakeQuizPage quiz;
 ElevScore elevScore;
 
 ArrayList<Question> allQuestions = new ArrayList<Question>();
-ArrayList<TextField> keyListeners = new ArrayList<TextField>();
 
 ArrayList<Skater> skaterList = new ArrayList<Skater>();
 PImage skaterImages [];

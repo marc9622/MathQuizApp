@@ -25,13 +25,6 @@ class MultipleChoiseQuestion extends Question{
     mulitiQ1Input.hidden = true;
     mulitiQ2Input.hidden = true;
     mulitiQ3Input.hidden = true;
-    
-    keyListeners.add(questionInput);
-    keyListeners.add(answerInput);
-    
-    keyListeners.add(mulitiQ1Input);
-    keyListeners.add(mulitiQ2Input);
-    keyListeners.add(mulitiQ3Input);
   }
   
   void teacherDisplay(){

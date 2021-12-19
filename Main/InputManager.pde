@@ -1,22 +1,30 @@
-//Statisk klasse, der holder styr på textfeldterne og sørger for, at man kun kan redigere i ét textfeldt af gangen.
+//Statisk klasse, der holder styr på textfelterne og sørger for, at man kun kan redigere i ét textfelt af gangen.
 static class InputManager {
   
-  //Listen af alle textfeldter.
+  //Listen af alle textfelter.
   private static ArrayList<TextField> keyListeners = new ArrayList<TextField>();
   
-  //Index på hvilket textfeldt i listen, der er selected.
-  private static int selectedTextField = 0;
+  //Index på hvilket textfelt i listen, der er selected.
+  private static int selectedTextField = -1;
   
   static void clear() {
     keyListeners.clear();
   }
   
-  //Bruges af textfeldternes konstruktører til at tilføje dem til listen af tekstfeldter.
+  //Bruges af textfelternes konstruktører til at tilføje dem til listen af tekstfelter.
   static void add(TextField textField) {
     keyListeners.add(textField);
   }
   
-  //Bruges af mouseClicked() og finder det textfeldt, der skal selectes, og unselecter alle andre textfeldter.
+  //Brugt til at fjerne et tekstfelt fra listen af tekstfelter og sikrer, at det selectede tekstfelt ikke ændres.
+  static void remove(TextField textField) {
+    if(keyListeners.indexOf(textField) == selectedTextField)
+      deselect();
+    else if(keyListeners.indexOf(textField) < selectedTextField)
+      selectedTextField--;
+  }
+  
+  //Bruges af mouseClicked() og finder det textfelt, der skal selectes, og unselecter alle andre textfelter.
   static void select() {
     for(int i = 0; i < keyListeners.size(); i++) {
       if(keyListeners.get(i).mousePress()) {
@@ -49,7 +57,11 @@ static class InputManager {
     keyListeners.get(selectedTextField).isSelected = true;
   }
   
-  //Bruges til at fortælle det selected textfeldt, at det skal registrere, hvad der bliver tastet.
+  static void deselect() {
+    
+  }
+  
+  //Bruges til at fortælle det selected textfelt, at det skal registrere, hvad der bliver tastet.
   static void input() {
     keyListeners.get(selectedTextField).keyPress();
   }

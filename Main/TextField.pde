@@ -141,6 +141,7 @@ public class TextField {
   public void tab() {
     InputManager.selectNext();
   }
+  
   //Lavet til at blive overridden.
   public void action() {}
 }
