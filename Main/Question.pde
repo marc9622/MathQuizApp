@@ -11,12 +11,11 @@ class Question {
   }
   
   void update(){
-    if(keyCode == ENTER){
-      currentQ ++;
-    }
+    fill(0);
+    text(question,500,50);
   }
   
   void display(){
-    text(question,width/3,100);
+
   }
 }

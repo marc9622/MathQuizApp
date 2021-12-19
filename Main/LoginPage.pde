@@ -1,5 +1,9 @@
 class LoginPage extends Page {
-
+  
+  boolean flipped = false;
+  int flipperX = width/2-12;
+  float frame = 0;
+  
   TextField nameField;
   TextField passField;
 
@@ -27,6 +31,7 @@ class LoginPage extends Page {
   }
 
   public void display() {
+    flipper();
     showText("Matematik Quiz", width * 1/2, height * 2/6, 50, strongTextColor);
     nameField.display();
     passField.display();
@@ -51,6 +56,10 @@ class LoginPage extends Page {
             if (Data.getString("Kode").equals(passField.input)) {
               //Her er brugeren logget ind. Så brug Data.getString("Nr") til et eller andet.
               statusText = "Logget ind :)";
+              if(loginPage.flipped)
+                page = 1;
+              else
+                page = 3;
               return true;
             }
             passField.input = "";
@@ -68,4 +77,29 @@ class LoginPage extends Page {
       return false;
     }
   }
+  
+  void flipper(){
+    if(abs(mouseX-width/2)<25 && abs(mouseY-(height-100))<13 && mousePressed && frame<frameCount-30){
+      flipped = !flipped;
+      frame = frameCount;
+    }
+    
+    if(!flipped){
+      fill(selectColor);
+      flipperX = width/2-12;
+    }
+    if(flipped){
+      fill(weakTextColor);
+      flipperX = width/2+12;
+    }
+    
+    rect(width/2,height-100,50,25,10);
+    fill(strongTextColor);
+    rect(flipperX,height-100,25,25,10);
+    
+    textSize(12);
+    fill(0);
+    text("Elev/Lærer",width/2,height-120);
+  }
+  
 }

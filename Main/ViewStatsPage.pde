@@ -42,6 +42,24 @@ class ViewStatsPage extends Page{
     line(400,0,400,height);
     pop();
     students = 0;
+    
+    flipper();
+  }
+  
+    void flipper(){
+    if(abs(mouseX-(width-75))<25 && abs(mouseY-30)<13 && mousePressed && frameNow<frameCount-30){
+      page = 1;
+      frameNow = frameCount;
+    }
+    
+    fill(weakTextColor);
+    rect(width-75-12,30,50,25,10);
+    fill(strongTextColor);
+    rect((width-75)+12,30,25,25,10);
+    
+    textSize(12);
+    fill(0);
+    text("Skift fane",width-80,20);
   }
   
 }

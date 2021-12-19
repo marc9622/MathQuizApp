@@ -1,7 +1,7 @@
 public abstract class Page {
   
   public Page() {
-    InputManager.clear();
+    //InputManager.clear();
     initiate();
   }
   

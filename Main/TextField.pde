@@ -8,11 +8,13 @@ public class TextField {
   private color fillCol = fillColor;
   private color selCol = selectColor;
   
-  String defaultText;
+  String defaultText = "";
   String input = "";
   private int textSize = 25;
 
   public boolean isSelected;
+  
+  boolean hidden = false; 
 
   public TextField(PVector pos, PVector size) {
     this.pos = pos.copy();
@@ -59,7 +61,7 @@ public class TextField {
   protected void displayText(String input) {
     textAlign(CENTER);
     textSize(textSize);
-    String text;
+    String text = "";
     if(input.length() == 0) {
       fill(secCol);
       text = defaultText;
