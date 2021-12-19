@@ -11,7 +11,9 @@ class ViewStatsPage extends Page{
       while(Data.next()){
         students++;
         fill(0);
-        text(Data.getString("Navn") + ": Score 1: " + Data.getInt("Score1") + " | Score 2: " + Data.getInt("Score2"),500,students*20+20);
+        textSize(20);
+        text(Data.getString("Navn") + ": Score 1: " + Data.getInt("Score1") + " | Score 2: " + Data.getInt("Score2"),450,students*30+20);
+        textSize(14);
         
         averageScore1 += Data.getInt("Score1");
         averageScore2 += Data.getInt("Score2");
@@ -47,19 +49,23 @@ class ViewStatsPage extends Page{
   }
   
     void flipper(){
-    if(abs(mouseX-(width-75))<25 && abs(mouseY-30)<13 && mousePressed && frameNow<frameCount-30){
+    rectMode(CENTER);
+    textAlign(CENTER);
+    if(abs(mouseX-(width-85))<25 && abs(mouseY-35)<13 && mousePressed && frameNow<frameCount-30){
       page = 1;
       frameNow = frameCount;
     }
     
     fill(weakTextColor);
-    rect(width-75-12,30,50,25,10);
+    rect(width-85,35,50,25,10);
     fill(strongTextColor);
-    rect((width-75)+12,30,25,25,10);
+    rect((width-85)+12,35,25,25,10);
     
     textSize(12);
     fill(0);
-    text("Skift fane",width-80,20);
+    text("Skift fane",width-85,20);
+    rectMode(CORNER);
+    textAlign(LEFT);
   }
   
 }

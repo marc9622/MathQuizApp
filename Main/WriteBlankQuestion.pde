@@ -1,14 +1,14 @@
 class WriteBlankQuestion extends Question{
-  AnswerField answer;
   
   WriteBlankQuestion(int nr, String question_,String answer_){
     super(nr,question_,answer_);
-    answer = new AnswerField(new PVector(width/3,300),new PVector(300,200));
+    answerField = new AnswerField(new PVector(300,300),new PVector(300,200));
+    multi = false;
   }
   
   void display(){
-    super.update();
-    answer.display();
+    super.display();
+    answerField.display();
   }
   
 }

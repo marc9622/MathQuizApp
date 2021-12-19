@@ -36,7 +36,7 @@ class LoginPage extends Page {
     nameField.display();
     passField.display();
     if (statusText != null)
-      showText(statusText, width * 1/2, height * 5/6, 15, strongTextColor);
+      showText(statusText, width * 1/2, height * 5/6-50, 15, strongTextColor);
   }
 
   private boolean login() {
@@ -50,12 +50,14 @@ class LoginPage extends Page {
     }
     if (Data.connect()) {
       Data.query("SELECT Nr, Navn, Kode FROM ElevData");
+
       while (true) {
         if (Data.next())
           if (Data.getString("Navn").equals(nameField.input)) {
             if (Data.getString("Kode").equals(passField.input)) {
               //Her er brugeren logget ind. Så brug Data.getString("Nr") til et eller andet.
               statusText = "Logget ind :)";
+              name = Data.getString("Navn");
               if(loginPage.flipped)
                 page = 1;
               else

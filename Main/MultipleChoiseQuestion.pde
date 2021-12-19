@@ -47,7 +47,7 @@ class MultipleChoiseQuestion extends Question{
     fill(0);
     textSize(22);
     if(mulitiQ1Input.hidden == false) {
-      text("Skriv de forkerte svarmuligheder nedenfor:", 240 + 320, 200 + 110);
+      text("Skriv de forkerte svarmuligheder nedenfor:", 200 + 320, 225 + 110);
     }else{
       text("Tilføj evt. multiple choice spørgsmål herunder:", 260 + 320, 200 + 110);
     }

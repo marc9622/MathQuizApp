@@ -5,15 +5,25 @@ ViewStatsPage stat;
 SQLite Data;
 TeacherCreateQuestions writeQuestions;
 TakeQuizPage quiz;
+ElevScore elevScore;
 
 ArrayList<Question> allQuestions = new ArrayList<Question>();
 ArrayList<TextField> keyListeners = new ArrayList<TextField>();
+
+ArrayList<Skater> skaterList = new ArrayList<Skater>();
+PImage skaterImages [];
+PImage sewer;
+PImage light;
+int skaterFrames;
 
 int currentQ = 0;
 boolean teacher;
 int NrQuestions;
 float frameNow;
 int page = 0;
+int score;
+
+String name;
 
 //Standard farvepalette til programmet. 
 color strongTextColor = color(99, 181, 255);
@@ -29,10 +39,25 @@ void setup() {
   Data = new SQLite( this, "questions.sqlite" );
   getQuestions();
   
+  sewer = loadImage("data/Sewer.png");
+  light = loadImage("data/Light.png");
+  
+  skaterFrames = 33;
+  skaterList.add( new Skater());
+
+  skaterImages = new PImage[skaterFrames];
+  for (int i = 0; i < skaterFrames; i++) {
+    skaterImages[i] = loadImage("data/Skater" + nf(i, 2) + ".png");
+  }
+  
   loginPage = new LoginPage();
   stat = new ViewStatsPage();
   writeQuestions = new TeacherCreateQuestions();
   quiz = new TakeQuizPage();
+  elevScore = new ElevScore();
+  
+  imageMode(CENTER);
+  frameRate(60);
 }
 
 void draw() {
@@ -49,6 +74,9 @@ void draw() {
       break;
     case 3:
       quiz.display();
+      break;
+    case 4:
+      elevScore.display();
       break;
     default:
       clear();
@@ -129,10 +157,17 @@ void getQuestions(){
     Data.query( "SELECT Nr, Question, Answer, Multi FROM Questions;" );
     
     while(Data.next()){
-      if(Data.getBoolean("Multi"))
-        allQuestions.add(new MultipleChoiseQuestion(Data.getInt("Nr"),Data.getString("Question"),Data.getString("Answer")));
-      else if(!Data.getBoolean("Multi"))
+      
+      if(Data.getString("Question").equals("")){
+        continue;
+      }
+
+      if(Data.getBoolean("Multi") == true){
+        allQuestions.add(new Question(Data.getInt("Nr"),Data.getString("Question"),Data.getString("Answer"))); 
+      }
+      else if(Data.getBoolean("Multi") == false){
         allQuestions.add(new WriteBlankQuestion(Data.getInt("Nr"),Data.getString("Question"),Data.getString("Answer")));
+      }
       NrQuestions++;
     }
   }

@@ -2,6 +2,7 @@ class AnswerField extends TextField {
   
   public AnswerField(PVector pos, PVector size) {
     super(pos, size);
+    defaultText = "Svar her";
   }
   
   public AnswerField(int posX, int posY, int sizeX, int sizeY) {

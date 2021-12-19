@@ -20,6 +20,7 @@ class TeacherCreateQuestions{
     
     q1ButtonDelete = new QButtonDeleteButton(0, 0, q1Button, this);
     allQButtonDeleteButtons.add(q1ButtonDelete);
+    
   }
   
   void display(){ 
@@ -70,19 +71,24 @@ class TeacherCreateQuestions{
   }  
   
     void flipper(){
-    if(abs(mouseX-(width-75))<25 && abs(mouseY-30)<13 && mousePressed && frameNow<frameCount-30){
+    rectMode(CENTER);
+    textAlign(CENTER);
+    if(abs(mouseX-(width-85))<25 && abs(mouseY-35)<13 && mousePressed && frameNow<frameCount-30){
       page = 2;
       frameNow = frameCount;
     }
     
     fill(selectColor);
-    rect(width-75-12,30,50,25,10);
+    rect(width-85,35,50,25,10);
     fill(strongTextColor);
-    rect((width-75)-12,30,25,25,10);
+    rect((width-85)-12,35,25,25,10);
     
     textSize(12);
     fill(0);
-    text("Skift fane",width-85,25);
+    text("Skift fane",width-85,20);
+    
+    rectMode(CORNER);
+    textAlign(LEFT);
   }
   
 }
