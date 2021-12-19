@@ -6,4 +6,9 @@
       //String sql = "INSERT INTO ElevData(Nr, Navn, Kode)VALUES ('" + 6 + "', '" + nyNavn + "', '" + nyKode + "');";
       Data.execute(sql);
       
+      String sql="DELETE FROM Questions WHERE Nr=" + 1 +";";
+      Data.execute(sql);
+
+
+      
  */

@@ -24,12 +24,14 @@ class TakeQuizPage extends Page {
   }
   
   void next(){
-    if(allQuestions.get(currentQ).answerField.input.equals(allQuestions.get(currentQ).answer)){
-      score++;
-      for (Skater s : skaterList) {
-        s.idle = false;
-        s.trick = true;
-        s.fail = false;
+    
+    
+      if(allQuestions.get(currentQ).answerField.input.equals(allQuestions.get(currentQ).answer)){
+        score++;
+        for (Skater s : skaterList) {
+          s.idle = false;
+          s.trick = true;
+          s.fail = false;
       }
     }
     else{

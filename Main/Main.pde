@@ -154,19 +154,22 @@ void getQuestions(){
   if ( Data.connect() ){
     Data.query( "SELECT Nr, Question, Answer, Multi, Answer2, Answer3, Answer4 FROM Questions;" );
     
+    
+    //String sql="DELETE FROM Questions WHERE Nr=" + 11 +";";
+    //Data.execute(sql);
+    
     while(Data.next()){
-      
+      NrQuestions++;      
       if(Data.getString("Question").equals("")){
         continue;
       }
 
-      if(Data.getBoolean("Multi") == true){
-        allQuestions.add(new Question(Data.getInt("Nr"),Data.getString("Question"),Data.getString("Answer"))); 
+      if(!Data.getString("Answer2").equals("")){
+        allQuestions.add(new Question(Data.getInt("Nr"),Data.getString("Question"),Data.getString("Answer"),Data.getString("Answer2"),Data.getString("Answer3"),Data.getString("Answer4"))); 
       }
-      else if(Data.getBoolean("Multi") == false){
+      else if(Data.getString("Answer2").equals("")){
         allQuestions.add(new WriteBlankQuestion(Data.getInt("Nr"),Data.getString("Question"),Data.getString("Answer")));
       }
-      NrQuestions++;
     }
   }
 }
