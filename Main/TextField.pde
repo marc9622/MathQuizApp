@@ -106,7 +106,7 @@ public class TextField {
         action();
       }
       else {
-        if (isKeyLetter(letter) || isKeyNumber(letter))
+        if (isKeyLetter(letter) || isKeyNumber(letter) || isKeyMathSymbol(letter))
           addLetter(letter);
       }
     }
@@ -131,6 +131,11 @@ public class TextField {
   
   protected boolean isKeyNumber(char letter) {
     return letter >= '0' && letter <= '9';
+  }
+  
+  protected boolean isKeyMathSymbol(char letter) {
+    Character[] allowedSymbols = {'+', '-', '*', '/', '^', '(', ')'}; //Derne liste bestemmer, hvilke symboler, der er gyldige.
+    return java.util.Arrays.asList(allowedSymbols).contains(letter);
   }
   
   public void tab() {
