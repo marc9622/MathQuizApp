@@ -1,4 +1,6 @@
 class TeacherCreateQuestions{
+  boolean multi;
+  
   color secCol = color(99, 181, 255);
   
   ArrayList<QuestionButton> allQuestionButtons = new ArrayList<QuestionButton>();
@@ -49,8 +51,11 @@ class TeacherCreateQuestions{
   }
   
   void addQButton(){
+    multi = false;
+    if(!q1Button.buttonQuestion.mulitiQ1Input.input.equals(""))
+      multi = true;
     
-    String sql = "INSERT INTO Questions(Nr, Question, Answer, Multi)VALUES ('" + NrQuestions+1 + "', '" + q1Button.buttonQuestion.questionInput.input + "', '" + q1Button.buttonQuestion.answerInput.input + "', '" + true + "');";
+    String sql = "INSERT INTO Questions(Nr, Question, Answer, Multi, Answer2, Answer3, Answer4)VALUES ('" + NrQuestions+1 + "', '" + q1Button.buttonQuestion.questionInput.input + "', '" + q1Button.buttonQuestion.answerInput.input + "', '" + multi + "', '" + q1Button.buttonQuestion.mulitiQ1Input.input + "', '" + q1Button.buttonQuestion.mulitiQ2Input.input + "', '" + q1Button.buttonQuestion.mulitiQ1Input.input + "');";
     Data.execute(sql);
     
     float previousX = allQuestionButtons.get(allQuestionButtons.size() - 1).x;

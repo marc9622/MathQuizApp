@@ -5,6 +5,8 @@ class TakeQuizPage extends Page {
   
     fill(selectColor);
     rect(850,600,200,100,10);
+    fill(strongTextColor);
+    text("Næste",850,600);
     if(abs(mouseX-850)<100 &&  abs(mouseY-600)<50 && mousePressed && frameNow<frameCount-30){
       next();
       frameNow = frameCount;

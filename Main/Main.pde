@@ -152,8 +152,7 @@ void mouseReleased() {
 
 void getQuestions(){
   if ( Data.connect() ){
-   
-    Data.query( "SELECT Nr, Question, Answer, Multi FROM Questions;" );
+    Data.query( "SELECT Nr, Question, Answer, Multi, Answer2, Answer3, Answer4 FROM Questions;" );
     
     while(Data.next()){
       
