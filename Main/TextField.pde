@@ -134,7 +134,7 @@ public class TextField {
   }
   
   protected boolean isKeyMathSymbol(char letter) {
-    Character[] allowedSymbols = {'+', '-', '*', '/', '^', '(', ')'}; //Derne liste bestemmer, hvilke symboler, der er gyldige.
+    Character[] allowedSymbols = {'+', '-', '*', '/', '^', '(', ')'}; //Denne liste bestemmer, hvilke symboler, der er gyldige.
     return java.util.Arrays.asList(allowedSymbols).contains(letter);
   }
   
