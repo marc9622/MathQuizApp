@@ -1,13 +1,20 @@
 class TakeQuizPage extends Page {
 
   public void display() {
+
+    fill(fillColor);
+    strokeWeight(3);
+    rect(width/2-10,52,width+20,200);
+    strokeWeight(2);
+   
     allQuestions.get(currentQ).display();
   
     fill(selectColor);
-    rect(850,600,200,100,10);
+    rect(775,650,300,50,10);
     fill(strongTextColor);
-    text("Næste",850,600);
-    if(abs(mouseX-850)<100 &&  abs(mouseY-600)<50 && mousePressed && frameNow<frameCount-30){
+    textSize(30);
+    text("Næste spørgsmål",775,660);
+    if(abs(mouseX-775)<150 &&  abs(mouseY-650)<25 && mousePressed && frameNow<frameCount-30){
       next();
       frameNow = frameCount;
     }

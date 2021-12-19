@@ -5,7 +5,7 @@ class Skater {
   boolean idle, trick, fail;
 
   Skater() {
-    x = width/2;
+    x = width/4;
     y = height - 150;
     w = 640;
     h = 320;
@@ -49,7 +49,7 @@ class Skater {
       currentFrame = (currentFrame + 1) % loopFrames;
   }
 
-    delay = (delay + 1) % 7;
+    delay = (delay + 1) % 8;
 
    /*
     if(x < width + 100){

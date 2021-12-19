@@ -13,7 +13,7 @@ class MultipleChoiseQuestion extends Question{
   MultipleChoiseQuestion(int nr, String question_, String answer_){
     super(nr,question_,answer_);
     
-    questionInput = new TextField(240 + 320, 9 + 110, 550, 50, "Skriv dit spørgsmål herunder");
+    questionInput = new TextField(240 + 320, 9 + 110, 550, 50, "Skriv dit spørgsmål her");
     answerInput = new TextField(240 + 320, 100 + 110, 550, 50, "Skriv dit svar her");
     mulitiQ1Input = new TextField(-1000, 0, 550, 50, "Skriv svarmulighed to.");
     mulitiQ2Input = new TextField(-1000, 0, 550, 50, "Skriv svarmulighed tre.");

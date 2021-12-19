@@ -57,19 +57,19 @@ class Question {
 
   void display() {
     fill(0);
-    textSize(30);
+    textSize(50);
     text(question, 500, 100);
     textSize(20);
     
     fill(selectColor);
     for(int i = 1; i < multiAns ; i++){
-      if(abs(mouseX-(width-150))<45 && abs(mouseY-(100*i+50))<45 && mousePressed){
+      if(abs(mouseX-(885))<45 && abs(mouseY-(100*i+130))<45 && mousePressed){
         buttonI = i;
       }
       if(i == buttonI)
         fill(weakTextColor);
       
-      rect(width-150,100*i+50,90,90,10);
+      rect(885,100*i+130,90,90,10);
       fill(selectColor);
     }
     
@@ -84,10 +84,11 @@ class Question {
         answerField.input = answer4;
       
       fill(strongTextColor);
-      text(answer, width-150,100*AX1+50);
-      text(answer2, width-150,100*AX2+50);
-      text(answer3, width-150,100*AX3+50);
-      text(answer4, width-150,100*AX4+50);
+      textSize(30);
+      text(answer, 885,100*AX1+140);
+      text(answer2, 885,100*AX2+140);
+      text(answer3, 885,100*AX3+140);
+      text(answer4, 885,100*AX4+140);
     }
   }
 }
